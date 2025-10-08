@@ -26,10 +26,12 @@ struct Cli {
     output: Option<String>,
 }
 
+/// Main entry point for BeaconChain
 fn main() -> Result<()> {
     // Parse command-line arguments
     let args = Cli::parse();
     
     // Run BeaconChain with parsed arguments
+    // This line is the core functionality of the program
     run(args.verbose, args.input, args.output)
 }
