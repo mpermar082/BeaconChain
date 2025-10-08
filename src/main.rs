@@ -6,23 +6,30 @@
 use clap::Parser;
 use beaconchain::{Result, run};
 
+/// Command-line arguments for BeaconChain
 #[derive(Parser)]
 #[command(version, about = "BeaconChain - A Rust implementation")]
 struct Cli {
     /// Enable verbose output
     #[arg(short, long)]
+    /// Flag to enable or disable verbose output
     verbose: bool,
     
-    /// Input file path
+    /// Path to input file
     #[arg(short, long)]
+    /// Input file path (optional)
     input: Option<String>,
     
-    /// Output file path
+    /// Path to output file
     #[arg(short, long)]
+    /// Output file path (optional)
     output: Option<String>,
 }
 
 fn main() -> Result<()> {
+    // Parse command-line arguments
     let args = Cli::parse();
+    
+    // Run BeaconChain with parsed arguments
     run(args.verbose, args.input, args.output)
 }
